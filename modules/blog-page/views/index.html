@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% import 'fragments/header.html' as header %}
+
+{% block beforeMain %}
+  {{ super() }}
+  {% render header.headerArea(data.page) %}
+{% endblock %}
+
+{% block main %}
+  <!-- Main Content-->
+  <div class="container">
+    <div class="sectionone">
+        We are committed to providing flexible, low-cost solutions to our customers that will help make their businesses run more smoothly and profitably.
+    </div>
+    <div class="herogrid whatwd">
+        {% for piece in data.pieces %}
+          <!-- Post Preview -->
+         
+          <!-- <div class="post-preview">
+            <a href="{{ piece._url }}">
+              <h2 class="post-title">{{ piece.heading }}</h2>
+              <h3 class="post-subtitle">{{ piece.subheading }}</h3>
+            </a>
+            <p class="post-meta"> Posted by {{ piece.author }} on {{ piece.publicationDate | date('MMMM D, YYYY') }}</p>
+          </div> -->
+          <div class="gridcard">
+            <div class="gridimage">
+                <img src="https://github.com/Gbolahan2003/isslcomp/blob/main/Rectangle27.png?raw=true" alt="">
+            </div>
+            <div class="gridtext">
+                <div class="texttitle">{{ piece.heading }}</div>
+                <div class="textbody">{{ piece.subheading }} </div>
+                 <div class="wwd">
+            Explore <span>></span> 
+        </div>
+            </div>
+        </div>
+     
+
+          <!-- Divider-->
+   
+        {% endfor %}
+    
+      </div>
+  
+
+</div>
+
+<div class="startaconvo">
+  <div class="container">
+      <div class="letsstart">
+          Lets start a Conversation
+      </div>
+
+      <div class="startbtn">
+          <button onclick="window.location.href = 'contactus.html'">CONTACT US</button>
+      </div>
+  </div>
+</div>
+{% endblock %}

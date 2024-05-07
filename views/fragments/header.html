@@ -1,0 +1,106 @@
+{% fragment headerArea(data) %}
+{% set background = apos.image.first(data.headerImage) %}
+
+
+
+
+<script>
+  // Function to add meta tags to the <head> section
+  function addMetaTags() {
+
+
+      // Replace these values with your dynamic data
+      var metaTitle = "{{ data.metatitle }}";
+      var metaDescription = "{{ data.meta_description }}";
+      var metaKeywords = "{{ data.meta_keywords }}";
+
+      // Create <title> element and set its content
+      var titleElement = document.createElement('title');
+      titleElement.textContent = metaTitle;
+
+      // Create <meta> elements for description and keywords
+      var descriptionElement = document.createElement('meta');
+      descriptionElement.name = 'description';
+      descriptionElement.content = metaDescription;
+
+      var keywordsElement = document.createElement('meta');
+      keywordsElement.name = 'keywords';
+      keywordsElement.content = metaKeywords;
+
+      // Append elements to the <head>
+      document.head.appendChild(titleElement);
+      document.head.appendChild(descriptionElement);
+      document.head.appendChild(keywordsElement);
+  }
+
+  // Call the function when the page loads
+  window.onload = function() {
+      addMetaTags();
+  };
+</script>
+
+
+
+
+
+
+<!-- Page Header-->
+<!-- {% if background %}
+
+  <header class="masthead" >
+ 
+{% else %}
+  <header class="masthead" style="background-color: blue;">
+{% endif %}
+    <div class="container position-relative px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+          <div class="site-heading">
+            <h1>{{ data.heading }}</h1>
+            <span class="subheading">{{ data.subheading }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header> -->
+  {% if background %}
+  {% set backgroundUrl = apos.attachment.url(background, { size: 'max' }) %}
+
+
+  <div class="whatwedo" style="background-image: url('{{ backgroundUrl }}')">
+    {% else %}
+  <div class="whatwedo" style="background-color: blue;">
+{% endif %}
+    <div class="container">
+        <div class="wordcontent">
+            <div class="herotext">{{ data.heading }}</div>
+            <div class="whatsub">{{ data.subheading }}</div>
+        </div>
+        <div class="scrollcont" id="scrollButton">
+            <svg class="toBottom " id="scroll-Bottom" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 60 60">
+            <title>scroll</title>
+            <circle cx="30" cy="30" r="29" style="fill:#fff;opacity:0.28" />
+            <polyline points="43.62 22.19 30 37.81 16.38 22.19"
+                style="fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:3px" />
+        </svg>
+
+          </div>
+          <script>
+            document.getElementById('scrollButton').addEventListener('click', function() {
+              // Scroll down by 300 pixels smoothly
+              window.scrollTo({
+                top: window.pageYOffset + 600,
+                behavior: 'smooth'
+              });
+            });
+        
+        </script>
+    </div>
+
+
+</div>
+
+
+
+{% endfragment %}

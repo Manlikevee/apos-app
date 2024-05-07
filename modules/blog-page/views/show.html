@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% import 'fragments/header.html' as header %}
+
+{% block beforeMain %}
+    {{ super() }}
+    {% render header.headerArea(data.piece) %}
+{% endblock %}
+
+{% block main %}
+    <!-- Post Content-->
+    <article class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center scscscsc">
+            
+                    {% area data.piece, 'main' %}
+             
+            </div>
+        </div>
+    </article>
+{% endblock %}
